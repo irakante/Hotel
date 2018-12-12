@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="App1.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:App1">
+
+    <StackLayout>
+        <Label
+            x:Name="ErrorSelectItemLabel"
+            IsVisible="True"
+            Text="Select Room" />
+        <ListView
+            x:Name="roomList"
+            HasUnevenRows="True"
+            ItemSelected="RoomList_ItemSelected"
+            ItemsSource="{Binding Rooms}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Number, StringFormat='ROOM #: {0}'}" />
+                                    <Label Text="{Binding Capacity}" />
+                                    <Label Text="{Binding FreePlace, StringFormat='FreePlace : {0}'}" />
+
+                                </StackLayout>
+                                <StackLayout>
+                                    <ListView
+                                        x:Name="ClientsList"
+                                        HeightRequest="50"
+                                        ItemsSource="{Binding Clients}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <ViewCell.View>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="{Binding Surname}" />
+                                                            <Label Text="{Binding Initials}" />
+                                                        </StackLayout>
+                                                    </ViewCell.View>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+            <Button Clicked="AddGuest" Text="Добавить" />
+            <Button Clicked="RemoveGuest" Text="Удалить" />
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
