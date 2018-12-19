@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="App1.Views.NoteListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Notes">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                x:Name="noteList"
+                HasUnevenRows="True"
+                ItemsSource="{Binding Notes}"
+                SelectedItem="{Binding SelectedNote, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout>
+                                    <Label FontSize="Medium" Text="{Binding Title}" />
+                                    <Label FontSize="Small" Text="{Binding Description}" />
+                                    <Label FontSize="Small" Text="{Binding Created}" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button
+                Command="{Binding CreateNoteCommand}"
+                CommandParameter="{Binding}"
+                Text="Добавить" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

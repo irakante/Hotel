@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="App1.Views.NotePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="NoteInfo">
+    <ContentPage.Content>
+        <StackLayout x:Name="NoteStack">
+            <StackLayout>
+                <Label Text="Title" />
+                <Entry FontSize="Medium" Text="{Binding ListViewModel.SelectedNote.Title}" />
+
+                <Label Text="Description" />
+                <Entry FontSize="Medium" Text="{Binding ListViewModel.SelectedNote.Description}" />
+
+            </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Button
+                    Command="{Binding ListViewModel.SaveNoteCommand}"
+                    CommandParameter="{Binding}"
+                    Text="Сохранить" />
+                <Button
+                    Command="{Binding ListViewModel.DeleteNoteCommand}"
+                    CommandParameter="{Binding}"
+                    Text="Удалить" />
+                <Button
+                    Command="{Binding ListViewModel.BackCommand}"
+                    CommandParameter="{Binding}"
+                    Text="Назад" />
+
+                <Button
+                    Command="{Binding ListViewModel.ShareCommand}"
+                    CommandParameter="{Binding}"
+                    Text="Share" />
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
